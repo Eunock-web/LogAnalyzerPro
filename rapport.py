@@ -22,6 +22,38 @@ def generate_file(statistique, dossier_source):
         # On récupère le dossier où se trouve le script actuel
         base_dir = Path(__file__).resolve().parent
         
+        # Creation du  dossier 'rapports/' 
+        dossier_rapports = base_dir / "rapports"
+        dossier_rapports.mkdir(exist_ok=True) # Crée le dossier s'il n'existe pas
+
+        nom_fichier = f"rapport_{date_nom_fichier}.json"
+        chemin_final = dossier_rapports / nom_fichier
+
+        #  Préparation des métadonnées et statistiques
+        # Note : os.getlogin() ou os.environ.get('USER') pour l'utilisateur 
+        utilisateur = os.environ.get('USER') or os.environ.get('USERNAME') or "unknown"
+        systeme = platform.system() # Utilise la bibliothèque platform -
+
+        # structure JSON du rapport
+        data = {
+            "metadata": {
+                "date": date_complete,
+                "utilisateur": utilisateur,
+                "os": systeme,
+                "source": os.path.abspath(dossier_source)
+            },
+            "statistiques": {
+                "total_lignes": statistique.get('total_lignes', 0),
+                "par_niveau": statistique.get('par_niveau', {}),
+                "top5_erreurs": statistique.get('top5_erreurs', [])
+            },
+            "fichiers_traites": statistique.get('fichiers_traites', [])
+        }
+
+        #  Écriture dans le fichier 
+        chemin_final.write_text(json.dumps(data, indent=4, ensure_ascii=False), encoding="utf-8")
+
+        return f"Fichier {nom_fichier} créé avec succès dans {dossier_rapports}"
 
     except Exception as e:
         print(f"Erreur lors de la génération du rapport : {e}")
