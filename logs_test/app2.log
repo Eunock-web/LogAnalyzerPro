@@ -1,0 +1,20 @@
+2024-04-01 08:22:30 ERROR Échec de la connexion au serveur LDAP
+2024-04-01 08:30:00 INFO Tâche planifiée de nettoyage démarrée
+2024-04-01 09:00:01 WARN Utilisation CPU supérieure à 85%
+2024-04-01 09:10:15 ERROR Timeout lors de l'accès à la base
+2024-04-01 09:15:00 INFO Redémarrage du service web
+2024-04-01 09:20:00 WARN Mémoire disponible faible
+2024-04-01 09:25:00 ERROR Échec de l'envoi d'email
+2024-04-01 09:30:00 INFO Sauvegarde terminée
+2024-04-01 09:35:00 WARN Espace disque critique
+2024-04-01 09:40:00 ERROR Perte de connexion réseau
+2024-04-01 09:45:00 INFO Tâche planifiée de sauvegarde démarrée
+2024-04-01 09:50:00 WARN Utilisation CPU supérieure à 90%
+2024-04-01 09:55:00 ERROR Échec de la synchronisation NTP
+2024-04-01 10:00:00 INFO Nettoyage terminé
+2024-04-01 10:05:00 WARN Mémoire disponible critique
+2024-04-01 10:10:00 ERROR Erreur d'accès au disque
+2024-04-01 10:15:00 INFO Service web opérationnel
+2024-04-01 10:20:00 WARN Utilisation CPU supérieure à 95%
+2024-04-01 10:25:00 ERROR Échec de la sauvegarde
+2024-04-01 10:30:00 INFO Fin de la maintenance
