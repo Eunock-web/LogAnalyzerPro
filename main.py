@@ -31,14 +31,21 @@ if __name__ == "__main__":
         # La fonction de vérification de l'espace disque
         espace = archiver.verifier_espace_disque(BASE_DIR)
         if(espace):
-            # La fonction d'analyse
-            stats = analyzer.analyser_logs(args.source, args.niveau)
-            # La fonction de génération de rapport
-            print(rapport.generate_file(stats, args.source))
-            # La fonction d'archivage
-            archiver.archiver_logs(args.source, args.dest)
-            # La fonction de nettoyage
-            archiver.supprimer_json_anciens(args.source, )
+                # La fonction d'analyse
+                print("\n=== LANCEMENT DE L'ANALYSE ===")
+                stats = analyzer.analyser_logs(args.source, args.niveau)
+
+                # La fonction de génération de rapport
+                print("\n=== GÉNÉRATION DU RAPPORT ===")
+                print(rapport.generate_file(stats, args.source))
+
+                # La fonction d'archivage
+                print("\n=== ARCHIVAGE DES LOGS ===")
+                archiver.archiver_logs(args.source, args.dest)
+
+                # La fonction de nettoyage
+                print("\n=== NETTOYAGE DES ANCIENS RAPPORTS ===")
+                archiver.supprimer_json_anciens(args.source)
         else:
             print("Erreur: Espace insuffisant sur le disque")
             sys.exit(1)

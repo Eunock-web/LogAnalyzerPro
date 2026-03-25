@@ -51,7 +51,7 @@ def analyser_logs(dossier_source:str, filtre_niveau:str) -> RapportResultats:
           compteurs["ERROR"] += 1
           parties = ligne.split(" ", 3)
           if len(parties) == 4:
-            toutes_erreurs.append(parties[-1])
+            toutes_erreurs.append(parties[-1].strip())
             
         elif "WARN" in ligne:
           compteurs["WARN"] += 1
@@ -63,11 +63,24 @@ def analyser_logs(dossier_source:str, filtre_niveau:str) -> RapportResultats:
           
           
   top5_erreurs = Counter(toutes_erreurs).most_common(5)
-  print('Top 5 Erreurs: ', top5_erreurs)
+
+  # Affichage structuré des résultats
+  print("\n=== RÉSUMÉ D'ANALYSE ===")
+  print(f"Total de lignes analysées : {total_lignes}")
+  print("Comptage par niveau :")
+  for niveau, nombre in compteurs.items():
+    print(f"  - {niveau}: {nombre}")
+
+  print("Top 5 des messages ERROR les plus fréquents :")
+  if top5_erreurs:
+    for i, (msg, cnt) in enumerate(top5_erreurs, start=1):
+      print(f"  {i}. {msg} ({cnt})")
+  else:
+    print("  Aucun message d'erreur trouvé")
 
   os_detecte = platform.system()
   utilisateur = os.environ.get("USER") or os.environ.get("USERNAME") or "Inconnu"
-  print(f"Machine {os_detecte} | Lancé par {utilisateur}")
+  print(f"Machine: {os_detecte} | Lancé par: {utilisateur}")
   
   resultats:RapportResultats = {
     "total_lignes": total_lignes,
