@@ -69,7 +69,7 @@ def archiver_logs(source, dest):
     return chemin_archive
 
 
-def supprimer_json_anciens(source, retention):
+def supprimer_json_anciens(source, retention=30):
     """
     Supprime les fichiers .json dans source dont l'âge
     dépasse le nombre de jours défini par retention.

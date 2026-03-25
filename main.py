@@ -38,6 +38,7 @@ if __name__ == "__main__":
             # La fonction d'archivage
             archiver.archiver_logs(args.source, args.dest)
             # La fonction de nettoyage
+            archiver.supprimer_json_anciens(args.source, )
         else:
             print("Erreur: Espace insuffisant sur le disque")
             sys.exit(1)

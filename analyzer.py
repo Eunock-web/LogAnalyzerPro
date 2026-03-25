@@ -84,7 +84,8 @@ def get_arguments():
   
   parser.add_argument("--source", required=True, help="Ah gars pourtant c'est simple")
   parser.add_argument("--niveau", default="ALL", choices=['ERROR', 'WARN', 'INFO', 'ALL'], help="Chef toi aussi")
-  
+  parser.add_argument('--dest', required=True, help="Tout est dans le nom wallah")
+
   args = parser.parse_args()
 
   return args
