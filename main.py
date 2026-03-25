@@ -3,16 +3,14 @@
 
 import os
 import sys
-# Importez l'analyser
-
-#Importez le rapport
-
-#Importez l'archiver
-
+import analyzer
+import archiver
+import rapport
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOGS_DIR = os.path.join(BASE_DIR, "logs_test")
 RAPPORT_DIR = os.path.join(BASE_DIR, "rapports")
+
 
 def setup_test_env():
 
@@ -29,16 +27,16 @@ if __name__ == "__main__":
     try:
         setup_test_env()
         # la fonction et_arguments
-        
+        args = analyzer.get_arguments()
         # La fonction de vérification de l'espace disque
-        espace = None
+        espace = archiver.verifier_espace_disque()
         if(espace):
             # La fonction d'analyse
-            
+            stats = analyzer.analyser_logs(args.source, args.niveau)
             # La fonction de génération de rapport
-            print("Remplissage pour le moment")
+            print(rapport.generate_file(stats, args.source))
             # La fonction d'archivage
-            
+            archiver.archiver_logs(args.source, args.dest)
             # La fonction de nettoyage
         else:
             print("Erreur: Espace insuffisant sur le disque")

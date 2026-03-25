@@ -79,15 +79,18 @@ def analyser_logs(dossier_source:str, filtre_niveau:str) -> RapportResultats:
   return resultats
 
 
-if __name__ == "__main__":
-  
+def get_arguments():
   parser = argparse.ArgumentParser(description="Flemme")
   
   parser.add_argument("--source", required=True, help="Ah gars pourtant c'est simple")
   parser.add_argument("--niveau", default="ALL", choices=['ERROR', 'WARN', 'INFO', 'ALL'], help="Chef toi aussi")
   
   args = parser.parse_args()
+
+  return args
+
+
+if __name__ == "__main__":
   
-  resultats_finaux = analyser_logs(args.source, args.niveau)
-  
-  print(resultats_finaux)
+  args = get_arguments()
+  analyser_logs(args.source, args.niveau)
