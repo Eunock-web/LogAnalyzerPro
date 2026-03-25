@@ -57,14 +57,3 @@ def generate_file(statistique, dossier_source):
     except Exception as e:
         print(f"Erreur lors de la génération du rapport : {e}")
         sys.exit(1) 
-
-# Exemple d'utilisation pour tes tests
-if __name__ == "__main__":
-    # Simulation de l'objet statistique provenant du Module 1
-    stats_demo = {
-        "total_lignes": 100,
-        "par_niveau": {"ERROR": 10, "WARN": 20, "INFO": 70},
-        "top5_erreurs": ["Timeout", "Auth Error", "Disk Full"],
-        "fichiers_traites": ["logs_test/app1.log", "logs_test/app2.log"]
-    }
-    print(generate_file(stats_demo, "./logs_test"))
