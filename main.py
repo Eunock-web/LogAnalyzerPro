@@ -29,7 +29,7 @@ if __name__ == "__main__":
         # la fonction et_arguments
         args = analyzer.get_arguments()
         # La fonction de vérification de l'espace disque
-        espace = archiver.verifier_espace_disque()
+        espace = archiver.verifier_espace_disque(BASE_DIR)
         if(espace):
             # La fonction d'analyse
             stats = analyzer.analyser_logs(args.source, args.niveau)
