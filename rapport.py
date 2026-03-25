@@ -57,3 +57,4 @@ def generate_file(statistique, dossier_source):
     except Exception as e:
         print(f"Erreur lors de la génération du rapport : {e}")
         sys.exit(1) 
+
